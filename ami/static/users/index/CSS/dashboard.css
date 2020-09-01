@@ -1,0 +1,26 @@
+.dash{
+ height:150px;
+ width:270px;
+ color:white;
+ font-size:29px;
+ padding:15px 20px 0px 20px;
+ background:#de3c3c;
+ margin:10px 15px 10px 10px ;
+ border-radius:25px;
+ }
+
+ .dash:hover{
+ background:#bd2424;
+ }
+ .dash1{
+ height:150px;
+ width:270px;
+ color:white;
+ font-size:29px;
+ background:#44bac7;
+ margin:10px 15px 10px 10px ;
+ border-radius:25px;
+ }
+ .dash1:hover{
+ background:#34a1ad;
+ }

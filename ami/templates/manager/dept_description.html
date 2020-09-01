@@ -1,0 +1,23 @@
+{% extends 'manager/base.html' %}
+
+{% block dash %}
+<html lang="en">
+<head>
+
+    <title></title>
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+
+    <h1 class="display-4">{{object.title}}</h1>
+      <p class="lead"><a href={{object.url}}>Website</a></p>
+      <p class="lead">{{object.phone}}</p>
+      <p class="lead">{{object.email}}</p>
+
+    <p class="lead">{{object.description}}</p>
+
+  </div>
+</div>
+</body>
+{% endblock %}

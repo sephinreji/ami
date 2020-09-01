@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: blue;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container">
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+
+    <label for="name"><b>Full Name</b></label>
+    <input type="text" placeholder="Enter Full Name" name="name" id="name" value="{{object.name}}"required>
+
+
+    <label for="address"><b>Address</b></label>
+    <address><input type="text" placeholder="Enter Address" name="address" id="address" value="{{object.address}}" required></address>
+
+
+    <label for="phone"><b>Mobile</b></label>
+    <input type="text" placeholder="Enter Mobile" name="phone" id="phone" value="{{object.phone}}" required>
+
+    <label for="dob"><b>DOB</b></label>
+    <input type="date" name="age" id="dob" value="{{object.age|date:'Y-m-d'}}" required>
+
+
+      <label for="image"><b>Image</b></label>
+
+    <input type="file"  class="form-control-file" name="image" id="image"  >
+
+
+
+    <label ><b>Batch</b></label>
+      <select name="batch">
+        <option selected >batch</option>
+          {% for batch in batches %}
+        {% if batch.name is object.batch%}
+          <option selected value="{{batch.id}}">{{batch.name}}</option>
+        {% else %}
+          <option value="{{batch.id}}">{{batch.name}}</option>
+        {%endif%}
+          {% endfor %}
+      </select><br>
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <button type="submit" class="registerbtn">Save and Continue</button>
+  </div>
+
+
+  <div class="container signin">
+
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+      {{form.errors}}
+  </div>
+</form>
+
+</body>
+</html>

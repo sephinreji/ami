@@ -1,0 +1,16 @@
+{% extends 'manager/base.html' %}
+
+{% block dash %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/dashboard/css/dashboardmain.css' %}">
+<div class="row">
+<div class="col-md-3 dash">
+    <h4 class="gli">Trainee</h4>
+{{count_one}}
+</div>
+<div class="col-md-3 dash ">
+    <h4 class="gli">Trainer</h4>
+{{count_two}}
+</div>
+    </div>
+{% endblock %}
